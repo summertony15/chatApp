@@ -12,4 +12,5 @@ router.get('/chat', checkAuthentication, (req, res)=>
         name: req.user.name //pass name to template
 }))
 
+
 module.exports = router

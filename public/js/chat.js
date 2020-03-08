@@ -6,7 +6,6 @@ const $messageFormBtn = $messageForm.querySelector('button')
 const $messages = document.querySelector('#messages')
 
 
-
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 

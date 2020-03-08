@@ -15,6 +15,9 @@ const MongoClient = require('mongodb').MongoClient
 //Init app
 const app = express()
 
+//MongoDB
+require('./models/db')
+
 //passport config
 require('./config/passport')(passport)
 
@@ -23,17 +26,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.engine('handlebars', exphbs({defaultLayout: 'layout'}))
 app.set('view engine', 'handlebars')
 
-//MongoDB
-const db = require('./config/keys').mongoURI
-mongoose.connect(db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-})
-
 //BodyParser MiddleWare
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.urlencoded({ extended: true}))
 app.use(cookieParser())
 
 //Set Static Floder
@@ -67,7 +62,7 @@ app.use((req, res, next) => {
 //Router
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
-
+app.use('/admin', require('./routes/admin'))
 
 const port = process.env.PORT || 5000
 

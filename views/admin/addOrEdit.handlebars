@@ -1,0 +1,19 @@
+<h1>{{viewTitle}}</h1>
+{{#if errors}}
+    {{#each errors}}
+    <div>
+        {{msg}}
+    </div>
+    {{/each}}
+{{/if}}
+<form action="/admin" method="POST">
+     <input type="hidden" name="_id" value="{{user._id}}">
+    <div class="form-group">
+        <label>name</label>
+        <input type="text" name="name" placeholder="name" value="{{user.name}}">
+        <label>password</label>
+        <input type="text" name="password" placeholder="password" value="{{user.password}}">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<a href="/admin/list">User List</a>
